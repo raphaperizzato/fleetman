@@ -1,0 +1,66 @@
+minikube start --vm-driver="hyperv" --memory=1900 --hyperv-virtual-switch="External Switch" --v=7 --alsologtostderr
+
+minikube start --vm-driver="hyperv" --memory=4900 --hyperv-virtual-switch="External Switch" --v=7
+
+minikube docker-env
+
+minikube status
+
+minikube ip
+
+minikube delete
+
+minikube credentials: docker / tcuser
+
+______________________
+
+
+kubectl describe pod webapp
+
+kubectl exec webapp ls  =  to run commands inside the pod named webapp 
+
+kubectl apply -f file_name.yaml    =   after editing the docker file, you need to run the apply cmmd
+
+kubectl apply -f .  =  apply changes to all files
+
+kubectl describe svc service_name  =  shows details of the svc, such as the selector
+
+ctrl + f5 to refresh browser deleting the cache 
+
+kubectl get po --show-labels 
+
+kubectl get po --show-labels -l release:0  =  only shows pods with that specific labels
+
+_________________________
+
+ReplicaSet  =  HA feature of kubernetes. Similar to auto scaling group. 
+
+kubectl describe rs replica_set_name
+______________________
+
+Deployment  =  Sames as replica set plus automatic rolling updates with 0 downtime
+
+______________________
+
+Rollout 
+
+kubectl rollout history deploy deployment_name  =  show the history of updates from a specific deployment
+
+kubectl rollout undo deploy deployment_name =  returns to the previous version of the deployment
+
+kubectl rollout undo deploy deployment_name --to-revision=2  =   rollback to specified version, in this case 2
+
+problem is that after the rollout, the deployment won't match the yaml file anymore. This is only used for something urgent.
+
+______________________
+
+Namespaces
+
+there is a default namespace in case you don't create it. The previous kubectl get all were all ran in the default namespace
+
+kubectl get ns
+
+
+______________________
+
+endpoint = "https://154D227413D16CC56A44100737A4350C.gr7.us-east-1.eks.amazonaws.com"

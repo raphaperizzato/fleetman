@@ -1,0 +1,5 @@
+terraform.tfstate.backup
+terraform.tfstate
+creds.txt
+/Course+Files+v10
+/.terraform
